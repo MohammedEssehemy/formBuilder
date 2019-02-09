@@ -1378,7 +1378,10 @@ const FormBuilder = function(opts, element) {
   return formBuilder
 }
 ;(function($) {
-  const methods = {
+ 
+  jQuery.fn.formBuilder = function(methodOrOptions = {}, ...args) {
+    
+    const methods = {
     init: (options, elems) => {
       const { i18n, ...opts } = jQuery.extend({}, defaultOptions, options, true)
       config.opts = opts
@@ -1421,8 +1424,7 @@ const FormBuilder = function(opts, element) {
       return methods.instance
     },
   }
-
-  jQuery.fn.formBuilder = function(methodOrOptions = {}, ...args) {
+    
     if (methods[methodOrOptions]) {
       return methods[methodOrOptions].apply(this, args)
     } else {
